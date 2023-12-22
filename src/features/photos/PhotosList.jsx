@@ -31,7 +31,7 @@ export default function PhotosList() {
   const filteredArr = filterPhotos();
 
   return (
-    <>
+    <div className={style.content}>
       {error && <h2>Ошибка при получении данных</h2>}
       {status === 'loading' && <h2>Loading...</h2>}
       {filteredArr.length ? (
@@ -48,6 +48,6 @@ export default function PhotosList() {
       ) : (
         <h2>Нет сохраненных фото</h2>
       )}
-    </>
+    </div>
   );
 }

@@ -24,6 +24,12 @@ code {
   background-color: #f7f1ea;
 }
 
+.content {
+  h2 {
+    color: #132f63;
+  }
+}
+
 .title {
   color: #f6554d;
   font-size: 50px;
@@ -80,6 +86,16 @@ code {
 
   p {
     color: #132f63;
+  }
+
+  span {
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      filter: brightness(80%);
+    }
   }
 }
 
