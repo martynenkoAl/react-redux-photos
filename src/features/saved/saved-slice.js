@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+localStorage.clear();
 
 const savedSlice = createSlice({
   name: '@@saved',

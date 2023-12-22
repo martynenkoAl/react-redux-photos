@@ -21,12 +21,10 @@ export default function PhotosList() {
 
   const filterPhotos = () => {
     if (filter) {
-      return saved.map((el) => photos.find((photo) => photo.id === el));
+      return photos.filter((el) => saved.some((value) => value === el.id));
     }
     return photos;
   };
-
-  console.log(photos);
 
   const filteredArr = filterPhotos();
 

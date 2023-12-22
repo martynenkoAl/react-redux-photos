@@ -1,22 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const loadPhotos = createAsyncThunk(
-  '@@photos/load-photos',
+  '@@photos/loadPhotos',
   (_, { extra: { client, api } }) => {
     return client.get(api.PHOTOS_API);
   }
 );
 
-const initialState = {
-  status: 'idle',
-  error: null,
-  list: [],
-};
-
 const photosSlice = createSlice({
   name: '@@photos',
-  initialState,
-  reducers: {},
+  initialState: {
+    status: 'idle',
+    error: null,
+    list: [],
+  },
+  reducers: {
+    deleteItem: (state, action) => {
+      state.list = state.list.filter((el) => el.id !== action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadPhotos.pending, (state) => {
@@ -34,6 +36,7 @@ const photosSlice = createSlice({
   },
 });
 
+export const { deleteItem } = photosSlice.actions;
 export const photosReducer = photosSlice.reducer;
 
 export const selectPhotosInfo = (state) => ({

@@ -8,6 +8,8 @@ import {
 import style from '../index.module.scss';
 import { GoHeartFill } from 'react-icons/go';
 import { GoHeart } from 'react-icons/go';
+import { MdDelete } from 'react-icons/md';
+import { deleteItem } from '../features/photos/photos-slice';
 
 export default function Card({ image, title, id }) {
   const dispatch = useDispatch();
@@ -23,6 +25,10 @@ export default function Card({ image, title, id }) {
 
   return (
     <div className={style.cardContainer}>
+      <MdDelete
+        className={style.deletBtn}
+        onClick={() => dispatch(deleteItem(id))}
+      />
       <img className={style.photo} src={image} alt={title} />
       <div className={style.photoBottom}>
         <p>
