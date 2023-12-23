@@ -1,9 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { PHOTOS_API } from '../../config';
 
 export const loadPhotos = createAsyncThunk(
   '@@photos/loadPhotos',
-  (_, { extra: { client, api } }) => {
-    return client.get(api.PHOTOS_API);
+  async (_, { rejectedWithValue }) => {
+    try {
+      const res = await axios.get(PHOTOS_API);
+      return res.data;
+    } catch (err) {
+      return rejectedWithValue(err);
+    }
   }
 );
 
@@ -31,7 +38,7 @@ const photosSlice = createSlice({
       })
       .addCase(loadPhotos.fulfilled, (state, action) => {
         state.status = 'received';
-        state.list = action.payload.data;
+        state.list = action.payload;
       });
   },
 });
