@@ -2,7 +2,7 @@
 <img src="https://github.com/martynenkoAl/react-redux-photos/assets/121212086/62b7ca83-5844-4883-b8d5-e41af6561e14" width="700" />
 
 ### Описание
-SPA c галереей фотографий с возможность сохранения в понравившиеся. 
+SPA c галереей фотографий с возможностью сохранить в закладки или удалить карточку. Реализовано с помощью React и Redux toolkit.
 
 ### Демо   
 https://martynenkoAl.github.io/react-redux-photos
