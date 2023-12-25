@@ -14,10 +14,11 @@ export default function PhotosList() {
   const { status, error, qty } = useSelector(selectPhotosInfo);
 
   useEffect(() => {
-    if (!qty) {
+    localStorage.clear();
+    if (qty === 0) {
       dispatch(loadPhotos());
     }
-  }, [qty, dispatch]);
+  }, [qty]);
 
   const filterPhotos = () => {
     if (filter) {
